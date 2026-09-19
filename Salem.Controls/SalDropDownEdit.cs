@@ -282,6 +282,7 @@ namespace Salem.Controls {
         protected override void AdjustDimensions() {
             IDisposable _oldRegion = _innerComboBox.Region;
             _innerButton.Width = ShowSeparatorOnMouseOver ? 27 : 26; //It broke in design-time, so I had to enforce it here...
+            IDisposable _oldRegion = _innerComboBox.Region;
         
             if (RightToLeft == RightToLeft.Yes)
                 _innerComboBox.Region = new Region(new Rectangle(30, 3, _innerComboBox.Width - _innerButton.Width - 5, _innerComboBox.PreferredHeight - 6));

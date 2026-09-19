@@ -68,6 +68,7 @@
             // 
             this.comboBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.Font = new System.Drawing.Font("Readex Pro", 9F);
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "########",
@@ -133,6 +134,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form3";
+            this.Padding = new System.Windows.Forms.Padding(66, 0, 0, 0);
             this.Text = "My Screen";
             this.Load += new System.EventHandler(this.Form3_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -141,6 +143,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
