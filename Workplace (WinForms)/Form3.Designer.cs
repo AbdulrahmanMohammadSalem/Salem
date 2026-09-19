@@ -134,6 +134,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form3";
+            this.Padding = new System.Windows.Forms.Padding(66, 0, 0, 0);
             this.Text = "My Screen";
             this.Load += new System.EventHandler(this.Form3_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
