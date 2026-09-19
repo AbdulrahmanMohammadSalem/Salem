@@ -24,10 +24,10 @@
         /// </summary>
         private void InitializeComponent() {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.fuiButton1 = new FastUI.FastUILibrary.Components.FuiButton();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
-            this.fuiButton1 = new FastUI.FastUILibrary.Components.FuiButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -49,49 +49,9 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.propertyGrid1);
-            this.splitContainer1.Size = new System.Drawing.Size(943, 656);
-            this.splitContainer1.SplitterDistance = 602;
+            this.splitContainer1.Size = new System.Drawing.Size(991, 656);
+            this.splitContainer1.SplitterDistance = 632;
             this.splitContainer1.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 619);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(147, 28);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Font Height = ";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "########",
-            "########",
-            "########",
-            "########",
-            "########",
-            "########",
-            "########"});
-            this.comboBox1.Location = new System.Drawing.Point(105, 86);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(228, 31);
-            this.comboBox1.TabIndex = 0;
-            this.comboBox1.FontChanged += new System.EventHandler(this.comboBox1_FontChanged);
-            // 
-            // propertyGrid1
-            // 
-            this.propertyGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.propertyGrid1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.propertyGrid1.Location = new System.Drawing.Point(0, 0);
-            this.propertyGrid1.Name = "propertyGrid1";
-            this.propertyGrid1.SelectedObject = this.comboBox1;
-            this.propertyGrid1.Size = new System.Drawing.Size(337, 656);
-            this.propertyGrid1.TabIndex = 0;
             // 
             // fuiButton1
             // 
@@ -125,10 +85,51 @@
             this.fuiButton1.Theme = "Windows11";
             this.fuiButton1.Click += new System.EventHandler(this.fuiButton1_Click);
             // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 619);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(147, 28);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Font Height = ";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.Font = new System.Drawing.Font("Readex Pro", 9F);
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "########",
+            "########",
+            "########",
+            "########",
+            "########",
+            "########",
+            "########"});
+            this.comboBox1.Location = new System.Drawing.Point(120, 86);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(228, 34);
+            this.comboBox1.TabIndex = 0;
+            this.comboBox1.FontChanged += new System.EventHandler(this.comboBox1_FontChanged);
+            // 
+            // propertyGrid1
+            // 
+            this.propertyGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.propertyGrid1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.propertyGrid1.Location = new System.Drawing.Point(0, 0);
+            this.propertyGrid1.Name = "propertyGrid1";
+            this.propertyGrid1.SelectedObject = this.comboBox1;
+            this.propertyGrid1.Size = new System.Drawing.Size(355, 656);
+            this.propertyGrid1.TabIndex = 0;
+            // 
             // Form3
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(943, 656);
+            this.ClientSize = new System.Drawing.Size(991, 656);
             this.Controls.Add(this.splitContainer1);
             this.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.Margin = new System.Windows.Forms.Padding(4);

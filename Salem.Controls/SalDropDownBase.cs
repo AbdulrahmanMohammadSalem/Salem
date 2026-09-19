@@ -222,7 +222,7 @@ namespace Salem.Controls {
         /// <exception cref="ArgumentException">The specified value is less than one.</exception>
         [Localizable(true)]
         public int DropDownWidth { get => _innerComboBox.DropDownWidth; set => _innerComboBox.DropDownWidth = value; }
-
+        
         /// <summary>
         /// Gets or sets the height in pixels of the drop-down portion of the <see cref="SalDropDownBase"/> control and its derivatives.
         /// </summary>
@@ -377,7 +377,7 @@ namespace Salem.Controls {
                 CalculateAppropriateItemRectangles = CalculateAppropriateItemRectangles_RTL;
             else
                 CalculateAppropriateItemRectangles = CalculateAppropriateItemRectangles_LTR;
-            
+
             base.OnRightToLeftChanged(e);
         }
 

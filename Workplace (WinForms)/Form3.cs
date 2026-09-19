@@ -16,7 +16,7 @@ namespace Workplace__WinForms_ {
         public Form3() {
             InitializeComponent();
 
-
+            
             var c = comboBox1.ItemHeight;
         }
 
@@ -25,13 +25,12 @@ namespace Workplace__WinForms_ {
         }
 
         private void comboBox1_FontChanged(object sender, EventArgs e) {
-            label1.Text = $"Font Height = {comboBox1.Font.Height}, Item Height = {comboBox1.ItemHeight}, SendMessage Result = {Salem.PInvoke.User32.SendMessage(comboBox1.Handle, 0x0154, IntPtr.Zero, IntPtr.Zero)}";
         }
-
+            
         private void fuiButton1_Click(object sender, EventArgs e) {
             comboBox1_FontChanged(null, null);
         }
-    }
+        }
 
     public class c : ComboBox {
         public c() {
