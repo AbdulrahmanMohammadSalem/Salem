@@ -11,7 +11,7 @@ namespace Salem.PInvoke {
         /// </summary>
         /// <remarks>This constant is typically used when invoking native methods from user32.dll via
         /// platform invocation (P/Invoke).</remarks>
-        public const string AssemblyName = "user32.dll";
+        public const string ASSEMBLY_NAME = "user32.dll";
 
         /// <summary>
         /// Removes the caret from the screen. Hiding a caret does not destroy its current shape or invalidate the insertion point.<br/>
@@ -26,10 +26,10 @@ namespace Salem.PInvoke {
         /// Hiding is cumulative. If your application calls HideCaret five times in a row, it must also call ShowCaret five times before the caret is displayed.<br/>
         /// For an example, see <a href="https://learn.microsoft.com/en-us/windows/desktop/menurc/using-carets">Hiding a Caret</a>.
         /// </remarks>
-        [DllImport(AssemblyName)]
+        [DllImport(ASSEMBLY_NAME)]
         public static extern bool HideCaret(IntPtr hWnd);
 
-
-
+        [DllImport(ASSEMBLY_NAME, SetLastError = false)]
+        public static extern IntPtr SendMessage(IntPtr hWnd, int Msg, IntPtr wParam, IntPtr lParam);
     }
 }

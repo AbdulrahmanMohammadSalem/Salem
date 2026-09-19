@@ -16,19 +16,26 @@ namespace Workplace__WinForms_ {
         public Form3() {
             InitializeComponent();
 
-            
+
+            var c = comboBox1.ItemHeight;
         }
 
         private void Form3_Load(object sender, EventArgs e) {
             
         }
 
-        private void button1_Click(object sender, EventArgs e) {
-            
+        private void comboBox1_FontChanged(object sender, EventArgs e) {
+            label1.Text = $"Font Height = {comboBox1.Font.Height}, Item Height = {comboBox1.ItemHeight}, SendMessage Result = {Salem.PInvoke.User32.SendMessage(comboBox1.Handle, 0x0154, IntPtr.Zero, IntPtr.Zero)}";
         }
 
-        private void textBox1_KeyPress(object sender, KeyPressEventArgs e) {
-            SpecialEventHandlers.SignedDecimalInput(textBox1, e);
+        private void fuiButton1_Click(object sender, EventArgs e) {
+            comboBox1_FontChanged(null, null);
+        }
+    }
+
+    public class c : ComboBox {
+        public c() {
+            
         }
     }
 }

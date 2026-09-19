@@ -222,6 +222,24 @@ namespace Salem.Controls {
         /// <exception cref="ArgumentException">The specified value is less than one.</exception>
         [Localizable(true)]
         public int DropDownWidth { get => _innerComboBox.DropDownWidth; set => _innerComboBox.DropDownWidth = value; }
+
+        /// <summary>
+        /// Gets or sets the height in pixels of the drop-down portion of the <see cref="SalDropDownBase"/> control and its derivatives.
+        /// </summary>
+        /// <returns>The height, in pixels, of the drop-down box.</returns>
+        /// <exception cref="ArgumentException">The specified value is less than one.</exception>
+        [Localizable(true)]
+        [DefaultValue(106)]
+        public int DropDownHeight { get => _innerComboBox.DropDownHeight; set => _innerComboBox.DropDownHeight = value; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the combo box is displaying its drop-down portion.
+        /// </summary>
+        /// <returns><see langword="true"/> if the drop-down portion is displayed; otherwise, <see langword="false"/>. The default is <see langword="false"/>.</returns>
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [DefaultValue(false)]
+        public bool DroppedDown { get => _innerComboBox.DroppedDown; set => _innerComboBox.DroppedDown = value; }
         
         /// <summary>
         /// Gets or sets the foreground color of the control.
@@ -262,6 +280,7 @@ namespace Salem.Controls {
         /// Gets or sets a value indicating the vertical height of all drop down items. The default value of -1 will use the default height.
         /// </summary>
         [DefaultValue(-1)]
+        [Localizable(true)]
         public int DropDownItemsHeight {
             get => _dropDownItemsHeight;
             set {
@@ -358,7 +377,7 @@ namespace Salem.Controls {
                 CalculateAppropriateItemRectangles = CalculateAppropriateItemRectangles_RTL;
             else
                 CalculateAppropriateItemRectangles = CalculateAppropriateItemRectangles_LTR;
-
+            
             base.OnRightToLeftChanged(e);
         }
 
