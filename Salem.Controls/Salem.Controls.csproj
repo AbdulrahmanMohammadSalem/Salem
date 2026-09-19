@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{41A172C5-A18E-42F4-8173-7D591D2222F5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Salem.Controls</RootNamespace>
+    <AssemblyName>Salem.Controls</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Salem.Controls.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PagedControl, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedControl.2.2.0\lib\net35\PagedControl.dll</HintPath>
+    </Reference>
+    <Reference Include="Siticone.Desktop.UI, Version=2.1.1.0, Culture=neutral, PublicKeyToken=9683591576b7f0b4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Siticone.Desktop.UI.2.1.1\lib\net40\Siticone.Desktop.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Tools.Base, Version=32.1462.19.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Tools.Windows, Version=32.1462.19.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TabControl, Version=2.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TabControl.2.1.2\lib\net35\TabControl.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GenericControlCollection.cs" />
+    <Compile Include="Renderers\SalToolStripRenderer.cs" />
+    <Compile Include="SalDropDownBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SalDropDownEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SalDropDownList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SalSplitButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SalButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SalContextMenuStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SalDropDownMenu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SalFormControlBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SalFormControlBox.Designer.cs">
+      <DependentUpon>SalFormControlBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Internal Components\Frm_MessageBoxBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Internal Components\Frm_MessageBoxBase.Designer.cs">
+      <DependentUpon>Frm_MessageBoxBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Internal Components\OverlayPanelBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Renderers\OfficeFlatToolStripRenderer.cs" />
+    <Compile Include="SalOverlayPanel.cs" />
+    <Compile Include="PredefinedColors.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SalRibbonGroupToolStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SalSelectableLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SalSpinner.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SalForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SmoothFlowLayoutPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ToolStripSalCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ToolStripSalGallery.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ToolStripSalRadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ToolStripSalSplitButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Salem.Drawing\Salem.Drawing.csproj">
+      <Project>{6c34353b-82ef-4e34-918a-c916cf2e2d72}</Project>
+      <Name>Salem.Drawing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Salem.PInvoke\Salem.PInvoke.csproj">
+      <Project>{693c3f9c-7902-4a9c-8c26-7677cadc482b}</Project>
+      <Name>Salem.PInvoke</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Salem.Utils\Salem.Utils.csproj">
+      <Project>{385482d2-eb8d-437b-989a-90d45a2084d8}</Project>
+      <Name>Salem.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SalFormControlBox.resx">
+      <DependentUpon>SalFormControlBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Internal Components\Frm_MessageBoxBase.resx">
+      <DependentUpon>Frm_MessageBoxBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Resources\MsgBx Error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MsgBx Exclamation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MsgBx Question.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MsgBx Warning.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
