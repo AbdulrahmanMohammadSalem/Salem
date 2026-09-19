@@ -47,28 +47,33 @@ namespace Salem.Controls {
 
         #region Events
         /// <summary>
-        /// Occurs when the drop-down portion of a <see cref="ComboBox"/> is shown.
+        /// Occurs when the drop-down portion of a <see cref="System.Windows.Forms.ComboBox"/> is shown.
         /// </summary>
+        [Category("Behavior"), Description("Occurs when the drop-down portion of a ComboBox is shown.")]
         public event EventHandler DropDown;
 
         /// <summary>
-        /// Occurs when the <see cref="ComboBox.SelectedIndex"/> property has changed.
+        /// Occurs when the <see cref="SelectedIndex"/> property has changed.
         /// </summary>
+        [Category("Behavior"), Description("Occurs when the SelectedIndex property has changed.")]
         public event EventHandler SelectedIndexChanged;
 
         /// <summary>
-        /// Occurs when the user changes the selected item and that change is displayed in the <see cref="ComboBox"/>.
+        /// Occurs when an item is chosen from the drop-down list and the drop-down list is closed.
         /// </summary>
+        [Category("Behavior"), Description("Occurs when an item is chosen from the drop-down list and the drop-down list is closed.")]
         public event EventHandler SelectionChangeCommitted;
 
         /// <summary>
-        /// Occurs when the control has formatted the text, but before the text is displayed.
+        /// Occurs when the combo box text has changed.
         /// </summary>
+        [Category("Behavior"), Description("Occurs when the combo box text has changed.")]
         public event EventHandler TextUpdate;
 
         /// <summary>
-        /// Occurs when the drop-down portion of the <see cref="ComboBox"/> is no longer visible.
+        /// Occurs when the drop-down portion of the <see cref="System.Windows.Forms.ComboBox"/> is no longer visible.
         /// </summary>
+        [Category("Behavior"), Description("Indicates that the drop-down portion of the combo box has closed.")]
         public event EventHandler DropDownClosed;
         #endregion
 
@@ -133,6 +138,7 @@ namespace Salem.Controls {
         [DefaultValue(null)]
         [RefreshProperties(RefreshProperties.Repaint)]
         [AttributeProvider(typeof(IListSource))]
+        [Category("Data"), Description("Indicates the list that this control will use to get its items.")]
         public object DataSource { get => _innerComboBox.DataSource; set => _innerComboBox.DataSource = value; }
 
         /// <summary>
@@ -146,6 +152,7 @@ namespace Salem.Controls {
         [DefaultValue("")]
         [TypeConverter("System.Windows.Forms.Design.DataMemberFieldConverter, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
         [Editor("System.Windows.Forms.Design.DataMemberFieldEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
+        [Category("Data"), Description("Indicates the property to display for the items in this control.")]
         public string DisplayMember { get => _innerComboBox.DisplayMember; set => _innerComboBox.DisplayMember = value; }
 
         /// <summary>
@@ -159,6 +166,7 @@ namespace Salem.Controls {
         /// <exception cref="ArgumentException">The specified property path cannot be resolved through the object specified by the <see cref="ListControl.DataSource"/> property.</exception>
         [DefaultValue("")]
         [Editor("System.Windows.Forms.Design.DataMemberFieldEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
+        [Category("Data"), Description("Indicates the property to use as the actual value for the items in the control.")]
         public string ValueMember { get => _innerComboBox.ValueMember; set => _innerComboBox.ValueMember = value; }
         
         /// <summary>
@@ -171,13 +179,17 @@ namespace Salem.Controls {
         [Localizable(true)]
         [Editor("System.Windows.Forms.Design.ListControlStringCollectionEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
         [MergableProperty(false)]
+        [Category("Data"), Description("The items in the combo box.")]
         public virtual ComboBox.ObjectCollection Items => _innerComboBox.Items;
 
         /// <summary>
         /// Gets or sets the zero-based index of the currently selected item in the combo box.
         /// </summary>
-        /// <remarks>Set this property to -1 to clear the selection. If the value is less than -1 or
-        /// greater than or equal to the number of items in the combo box, an exception may be thrown.</remarks>
+        /// <remarks>
+        /// Set this property to -1 to clear the selection. If the value is less than -1 or
+        /// greater than or equal to the number of items in the combo box, an exception may be thrown.
+        /// </remarks>
+        [Category("Appearance"), Description("The zero-based index of the currently selected item in the combo box.")]
         public int SelectedIndex { get => _innerComboBox.SelectedIndex; set => _innerComboBox.SelectedIndex = value; }
 
         /// <summary>
@@ -197,6 +209,7 @@ namespace Salem.Controls {
         /// sorted in ascending order. Setting this property to <see langword="false"/> preserves the order in which
         /// items are added.</remarks>
         [DefaultValue(false)]
+        [Category("Behavior"), Description("Specifies whether items in the list portion of the combo box are sorted.")]
         public bool Sorted { get => _innerComboBox.Sorted; set => _innerComboBox.Sorted = value; }
 
         /// <summary>
@@ -205,6 +218,7 @@ namespace Salem.Controls {
         [DefaultValue("")]
         [Localizable(true)]
         [Bindable(true)]
+        [Category("Appearance"), Description("The text associated with the control.")]
         public override string Text { get => _innerComboBox.Text; set => _innerComboBox.Text = value; }
 
         /// <summary>
@@ -214,6 +228,7 @@ namespace Salem.Controls {
         /// displayed in the drop-down list. The default value is 8.</remarks>
         [DefaultValue(12)]
         [Localizable(true)]
+        [Category("Behavior"), Description("The maximum number of entries to display in the drop-down list.")]
         public int MaxDropDownItems { get => _innerComboBox.MaxDropDownItems; set => _innerComboBox.MaxDropDownItems = value; }
 
         /// <summary>
@@ -222,6 +237,7 @@ namespace Salem.Controls {
         /// <returns>The width, in pixels, of the drop-down box.</returns>
         /// <exception cref="ArgumentException">The specified value is less than one.</exception>
         [Localizable(true)]
+        [Category("Behavior"), Description("The width, in pixels, of the drop-down box in a combo box.")]
         public int DropDownWidth { get => _innerComboBox.DropDownWidth; set => _innerComboBox.DropDownWidth = value; }
         
         /// <summary>
@@ -231,6 +247,7 @@ namespace Salem.Controls {
         /// <exception cref="ArgumentException">The specified value is less than one.</exception>
         [Localizable(true)]
         [DefaultValue(106)]
+        [Category("Behavior"), Description("The height, in pixels, of the drop-down box in a combo box.")]
         public int DropDownHeight { get => _innerComboBox.DropDownHeight; set => _innerComboBox.DropDownHeight = value; }
 
         /// <summary>
@@ -241,16 +258,33 @@ namespace Salem.Controls {
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [DefaultValue(false)]
         public bool DroppedDown { get => _innerComboBox.DroppedDown; set => _innerComboBox.DroppedDown = value; }
-        
+
+        /// <summary>
+        /// Gets or sets the background color of the control.
+        /// </summary>
+        [Localizable(true)]
+        [DefaultValue(typeof(Color), "Window")]
+        [Category("Appearance"), Description("The background color of the component.")]
+        public override Color BackColor {
+            get => base.BackColor;
+            set {
+                base.BackColor = value;
+
+                if (_innerComboBox != null)
+                    _innerButton.BackColor = _innerComboBox.BackColor = value;
+            }
+        }
+
         /// <summary>
         /// Gets or sets the foreground color of the control.
         /// </summary>
         [Localizable(true)]
         [DefaultValue(typeof(Color), "WindowText")]
+        [Category("Appearance"), Description("The foreground color of this component, which is used to display text.")]
         public override Color ForeColor { 
             get => base.ForeColor;
             set {
-                _foreColorBrush.Color = base.ForeColor = value;
+                _foreColorBrush.Color = _innerButton.ForeColor = base.ForeColor = value;
 
                 if (_innerComboBox != null)
                     _innerComboBox.ForeColor = value;
@@ -258,15 +292,53 @@ namespace Salem.Controls {
         }
 
         /// <summary>
+        /// Gets or sets the color of the border displayed around the control.
+        /// </summary>
+        [Localizable(true)]
+        [DefaultValue(typeof(Color), "188, 188, 188")]
+        [Category("Appearance"), Description("The color of the border displayed around the control.")]
+        public virtual Color BorderColor {
+            get => _borderColor;
+            set {
+                _borderColor = value;
+                _innerButton.Invalidate();
+            }
+        }
+
+        /// <summary>
         /// Gets or sets a value indicating whether formatting is applied to the <see cref="ListControl.DisplayMember"/> property of the <see cref="ListControl"/>.
         /// </summary>
         /// <returns><see langword="true"/> if formatting of the <see cref="ListControl.DisplayMember"/> property is enabled; otherwise, <see langword="false"/>. The default is <see langword="false"/>.</returns>
+        [DefaultValue(false)]
+        [Description("If this property is true, the value of FormatString is used to convert the value of DisplayMember into a value that can be displayed.")]
         public bool FormattingEnabled { get => _innerComboBox.FormattingEnabled; set => _innerComboBox.FormattingEnabled = value; }
+
+        /// <summary>
+        /// Gets or sets the format-specifier characters that indicate how a value is to be displayed.
+        /// </summary>
+        /// <returns>
+        /// The string of format-specifier characters that indicates how a value is to be displayed.
+        /// </returns>
+        [DefaultValue("")]
+        [Editor("System.Windows.Forms.Design.FormatStringEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
+        [MergableProperty(false)]
+        [Description("The format specifier characters that indicate how a value is to be displayed.")]
+        public string FormatString { get => _innerComboBox.FormatString; set => _innerComboBox.FormatString = value; }
+
+        /// <summary>
+        /// Gets or sets the <see cref="IFormatProvider"/> that provides custom formatting behavior.
+        /// </summary>
+        /// <returns>The <see cref="IFormatProvider"/> implementation that provides custom formatting behavior.</returns>
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        [DefaultValue(null)]
+        public IFormatProvider FormatInfo { get => _innerComboBox.FormatInfo; set => _innerComboBox.FormatInfo = value; }
 
         /// <summary>
         /// Gets or sets a value indicating the horizontal alignment of all drop down items.
         /// </summary>
         [DefaultValue(StringAlignment.Near)]
+        [Category("Appearance"), Description("Specifies the horizontal alignment of all drop down items.")]
         public StringAlignment DropDownItemsTextAlign {
             get => _textAlignDropDownItems;
             set {
@@ -282,6 +354,7 @@ namespace Salem.Controls {
         /// </summary>
         [DefaultValue(-1)]
         [Localizable(true)]
+        [Category("Appearance"), Description("Specifies the vertical height of all drop down items. The default value of -1 will use the default height.")]
         public int DropDownItemsHeight {
             get => _dropDownItemsHeight;
             set {
@@ -305,6 +378,7 @@ namespace Salem.Controls {
         /// Gets or sets a value indicating the intended purpose/usage of the combo box control.
         /// </summary>
         [DefaultValue(SalDropDownPurpose.NotSet)]
+        [Category("Behavior"), Description("Specifies the intended purpose/usage of the combo box control.")]
         public SalDropDownPurpose Purpose {
             get => _purpose;
             set {
@@ -321,12 +395,14 @@ namespace Salem.Controls {
         /// Determines whether to draw each item in different fonts -- useful when the value of <see cref="Purpose"/> is set to <see cref="SalDropDownPurpose.Fonts"/>.
         /// </summary>
         [DefaultValue(true)]
+        [Category("Behavior"), Description("Specifies whether to draw each item in different fonts; useful when the value of the Purpose property is set to Fonts.")]
         public bool UsePurposeAwareItemFonts { get; set; } = true;
 
         /// <summary>
         /// Detemines whether to draw each item with different images -- useful when the value of <see cref="Purpose"/> is set to <see cref="SalDropDownPurpose.Countries"/>.
         /// </summary>
         [DefaultValue(true)]
+        [Category("Behavior"), Description("Specifies whether to draw each item with different images; useful when the value of the Purpose property is set to Countries.")]
         public bool UsePurposeAwareItemImages { get; set; } = true;
 
         /// <summary>
@@ -569,14 +645,19 @@ namespace Salem.Controls {
         public string GetItemText(object item) => _innerComboBox.GetItemText(item);
 
         /// <summary>
-        /// Maintains performance when items are added to the <see cref="ComboBox"/> one at a time.
+        /// Maintains performance when items are added to the <see cref="System.Windows.Forms.ComboBox"/> one at a time.
         /// </summary>
         public void BeginUpdate() => _innerComboBox.BeginUpdate();
 
         /// <summary>
-        /// Resumes painting the <see cref="ComboBox"/> control after painting is suspended by the <see cref="ComboBox.BeginUpdate"/> method.
+        /// Resumes painting the <see cref="System.Windows.Forms.ComboBox"/> control after painting is suspended by the <see cref="ComboBox.BeginUpdate"/> method.
         /// </summary>
         public void EndUpdate() => _innerComboBox.EndUpdate();
+
+        /// <summary>
+        /// Clears the current selection in the combo box.
+        /// </summary>
+        public void ClearSelection() => _innerComboBox.SelectedIndex = -1;
         #endregion
     }
 }

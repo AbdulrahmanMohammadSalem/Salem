@@ -23,178 +23,59 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.fuiButton1 = new FastUI.FastUILibrary.Components.FuiButton();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.propertyGrid2 = new System.Windows.Forms.PropertyGrid();
-            this.salDropDownEdit1 = new Salem.Controls.SalDropDownEdit();
-            this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            this.button1 = new System.Windows.Forms.Button();
+            this.salDropDownList1 = new Salem.Controls.SalDropDownList();
             this.SuspendLayout();
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.label2);
-            this.splitContainer1.Panel1.Controls.Add(this.label1);
-            this.splitContainer1.Panel1.Controls.Add(this.salDropDownEdit1);
-            this.splitContainer1.Panel1.Controls.Add(this.fuiButton1);
-            this.splitContainer1.Panel1.Controls.Add(this.comboBox1);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.propertyGrid1);
-            this.splitContainer1.Panel2.Controls.Add(this.propertyGrid2);
-            this.splitContainer1.Size = new System.Drawing.Size(991, 656);
-            this.splitContainer1.SplitterDistance = 632;
-            this.splitContainer1.TabIndex = 0;
-            // 
-            // fuiButton1
-            // 
-            this.fuiButton1.BackColor = System.Drawing.Color.Transparent;
-            this.fuiButton1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.fuiButton1.BorderWidth = 1.2F;
-            this.fuiButton1.ControlHeight = 36;
-            this.fuiButton1.ControlWidth = 125;
-            this.fuiButton1.CornerRadius = 8F;
-            this.fuiButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.fuiButton1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
-            this.fuiButton1.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            this.fuiButton1.FontColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.fuiButton1.FontSize = 10.5F;
-            this.fuiButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.fuiButton1.HoverBorder = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-            this.fuiButton1.HoverFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
-            this.fuiButton1.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.fuiButton1.Location = new System.Drawing.Point(342, 527);
-            this.fuiButton1.MoreFontSettings = new System.Drawing.Font("Segoe UI", 10.5F);
-            this.fuiButton1.MoveTextHorizontal = 0;
-            this.fuiButton1.MoveTextVertical = 0;
-            this.fuiButton1.Name = "fuiButton1";
-            this.fuiButton1.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
-            this.fuiButton1.PressDepth = 2;
-            this.fuiButton1.PressFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(215)))), ((int)(((byte)(215)))));
-            this.fuiButton1.Size = new System.Drawing.Size(125, 36);
-            this.fuiButton1.TabIndex = 2;
-            this.fuiButton1.Text = "Refresh";
-            this.fuiButton1.TextPosition = FastUI.FastUILibrary.Core.FastTextAlign.Center;
-            this.fuiButton1.Theme = "Windows11";
-            this.fuiButton1.Click += new System.EventHandler(this.fuiButton1_Click);
             // 
             // comboBox1
             // 
-            this.comboBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "########",
-            "########",
-            "########",
-            "########",
-            "########",
-            "########",
-            "########"});
-            this.comboBox1.Location = new System.Drawing.Point(90, 282);
+            this.comboBox1.Location = new System.Drawing.Point(242, 344);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(190, 31);
+            this.comboBox1.Size = new System.Drawing.Size(246, 31);
             this.comboBox1.TabIndex = 0;
-            this.comboBox1.FontChanged += new System.EventHandler(this.comboBox1_FontChanged);
             // 
-            // label1
+            // button1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(282, 256);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(147, 23);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "SalDropDownEdit:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(86, 256);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(98, 23);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "ComboBox:";
-            // 
-            // propertyGrid2
-            // 
-            this.propertyGrid2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.propertyGrid2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.propertyGrid2.Location = new System.Drawing.Point(0, 0);
-            this.propertyGrid2.Name = "propertyGrid2";
-            this.propertyGrid2.SelectedObject = this.comboBox1;
-            this.propertyGrid2.Size = new System.Drawing.Size(355, 348);
-            this.propertyGrid2.TabIndex = 1;
+            this.button1.Location = new System.Drawing.Point(561, 405);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(115, 31);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // salDropDownList1
             // 
-            this.salDropDownEdit1.DropDownWidth = 190;
-            this.salDropDownEdit1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.salDropDownEdit1.FormattingEnabled = false;
-            this.salDropDownEdit1.Items.AddRange(new object[] {
-            "########",
-            "########",
-            "########",
-            "########",
-            "########",
-            "########",
-            "########"});
-            this.salDropDownEdit1.Location = new System.Drawing.Point(286, 282);
-            this.salDropDownEdit1.Name = "salDropDownList1";
-            this.salDropDownEdit1.SelectedIndex = -1;
-            this.salDropDownEdit1.Size = new System.Drawing.Size(190, 31);
-            this.salDropDownEdit1.TabIndex = 3;
-            this.salDropDownEdit1.TabStop = false;
-            // 
-            // propertyGrid1
-            // 
-            this.propertyGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.propertyGrid1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.propertyGrid1.Location = new System.Drawing.Point(0, 348);
-            this.propertyGrid1.Name = "propertyGrid1";
-            this.propertyGrid1.SelectedObject = this.salDropDownEdit1;
-            this.propertyGrid1.Size = new System.Drawing.Size(355, 308);
-            this.propertyGrid1.TabIndex = 0;
+            this.salDropDownList1.BackColor = System.Drawing.Color.AliceBlue;
+            this.salDropDownList1.BorderColor = System.Drawing.Color.CornflowerBlue;
+            this.salDropDownList1.DropDownWidth = 246;
+            this.salDropDownList1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.salDropDownList1.Location = new System.Drawing.Point(242, 296);
+            this.salDropDownList1.Name = "salDropDownList1";
+            this.salDropDownList1.SelectedIndex = -1;
+            this.salDropDownList1.Size = new System.Drawing.Size(246, 31);
+            this.salDropDownList1.TabIndex = 1;
+            this.salDropDownList1.TabStop = false;
             // 
             // Form3
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(991, 656);
-            this.Controls.Add(this.splitContainer1);
+            this.ClientSize = new System.Drawing.Size(787, 566);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.salDropDownList1);
+            this.Controls.Add(this.comboBox1);
             this.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form3";
             this.Text = "My Screen";
-            this.Load += new System.EventHandler(this.Form3_Load);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.PropertyGrid propertyGrid1;
-        private FastUI.FastUILibrary.Components.FuiButton fuiButton1;
-        private Salem.Controls.SalDropDownEdit salDropDownEdit1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PropertyGrid propertyGrid2;
+        private Salem.Controls.SalDropDownList salDropDownList1;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -17,27 +17,17 @@ namespace Salem.Controls {
         #region Instance Fields
         private Color _dropDownArrowColor = Color.FromArgb(60, 60, 60);
         private int _borderSize = 1, _imageSizeCache;
+        private string _placeholderText = "Select";
+        private Color _placeholderTextColor = Color.Gray;
         #endregion
 
         #region Public Properties
-        /// <summary>
-        /// Gets or sets the color of the border displayed around the control.
-        /// </summary>
-        [Localizable(true)]
-        [DefaultValue(typeof(Color), "188, 188, 188")]
-        public Color BorderColor {
-            get => _borderColor;
-            set {
-                _borderColor = value;
-                _innerButton.Invalidate();
-            }
-        }
-
         /// <summary>
         /// Gets or sets the background color of the combo box when the mouse pointer is over it.
         /// </summary>
         [Localizable(true)]
         [DefaultValue(typeof(Color), "229, 229, 229")]
+        [Category("Appearance"), Description("The background color of the combo box when the mouse pointer is over it.")]
         public Color MouseOverBackColor { get => _innerButton.FlatAppearance.MouseOverBackColor; set => _innerButton.FlatAppearance.MouseOverBackColor = value; }
 
         /// <summary>
@@ -45,13 +35,15 @@ namespace Salem.Controls {
         /// </summary>
         [Localizable(true)]
         [DefaultValue(typeof(Color), "210, 210, 210")]
+        [Category("Appearance"), Description("The background color of the combo box when the mouse button is pressed.")]
         public Color MouseDownBackColor { get => _innerButton.FlatAppearance.MouseDownBackColor; set => _innerButton.FlatAppearance.MouseDownBackColor = value; }
 
         /// <summary>
-        /// Gets or sets the border thickness of the combo box.
+        /// Gets or sets the border thickness of the combo box in pixels.
         /// </summary>
         [Localizable(true)]
         [DefaultValue(1)]
+        [Category("Appearance"), Description("The border thickness of the combo box in pixels.")]
         public int BorderSize {
             get => _borderSize;
             set {
@@ -69,6 +61,7 @@ namespace Salem.Controls {
         /// </summary>
         [Localizable(true)]
         [DefaultValue(typeof(Color), "60, 60, 60")]
+        [Category("Appearance"), Description("The color used to draw the drop-down arrow on the button.")]
         public Color DropDownArrowColor { 
             get => _dropDownArrowColor; 
             set {
@@ -78,25 +71,43 @@ namespace Salem.Controls {
         }
 
         /// <summary>
-        /// Gets or sets the background color of the control.
+        /// Gets or sets the text displayed when no item is selected in the combo box.
         /// </summary>
         [Localizable(true)]
-        [DefaultValue(typeof(Color), "Window")]
-        public override Color BackColor {
-            get => base.BackColor;
-            set{ 
-                base.BackColor = value;
+        [DefaultValue("Select")]
+        [Category("Appearance"), Description("The text displayed when no item is selected in the combo box.")]
+        public string PlaceholderText {
+            get => _placeholderText;
+            set {
+                _placeholderText = value;
 
-                if (_innerComboBox != null)
-                    _innerComboBox.BackColor = value;
+                if (_innerComboBox.SelectedIndex == -1)
+                    _innerButton.Text = value;
             }
         }
 
         /// <summary>
-        /// Gets or sets the padding of the combo box control.
+        /// Gets or sets the color of the placeholder text.
+        /// </summary>
+        [Localizable(true)]
+        [DefaultValue(typeof(Color), "Gray")]
+        [Category("Appearance"), Description("The color of the placeholder text.")]
+        public Color PlaceholderTextColor {
+            get => _placeholderTextColor;
+            set {
+                _placeholderTextColor = value;
+
+                if (_innerComboBox.SelectedIndex == -1)
+                    _innerButton.ForeColor = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the text padding for the combo box control face (doesn't affect the drop-down portion).
         /// </summary>
         [Localizable(true)]
         [DefaultValue(typeof(Padding), "0, 0, 0, 0")]
+        [Category("Layout"), Description("The text padding for the combo box control face (doesn't affect the drop-down portion).")]
         public new Padding Padding { get => _innerButton.Padding; set => _innerButton.Padding = value; }
 
         /// <summary>
@@ -106,6 +117,7 @@ namespace Salem.Controls {
         /// <exception cref="InvalidEnumArgumentException">The value assigned is not one of the <see cref="ContentAlignment"/> values.</exception>
         [Localizable(true)]
         [DefaultValue(ContentAlignment.MiddleLeft)]
+        [Category("Appearance"), Description("The alignment of the text on the combo box control.")]
         public ContentAlignment TextAlign { get => _innerButton.TextAlign; set => _innerButton.TextAlign = value; }
 
         /// <summary>
@@ -160,7 +172,7 @@ namespace Salem.Controls {
         protected override void InnerComboBox_DropDown(object sender, EventArgs e) => OnDropDown(e);
 
         protected override void InnerComboBox_SelectedIndexChanged(object sender, EventArgs e) {
-            _innerButton.Text = _innerComboBox.Text;
+            RefreshPlaceholderVisuals();
             OnSelectedIndexChanged(e);
         }
 
@@ -201,6 +213,13 @@ namespace Salem.Controls {
             _imageSizeCache = _innerButton.Height - 2 * _borderSize;
         }
 
+        protected override void OnCreateControl() {
+            base.OnCreateControl();
+
+            // This must come after the base version.
+            RefreshPlaceholderVisuals();
+        }
+
         protected override void Dispose(bool disposing) {
             if (disposing) {
                 _innerButton.Paint -= InnerButton_Paint;
@@ -218,6 +237,18 @@ namespace Salem.Controls {
             }
 
             base.Dispose(disposing);
+        }
+        #endregion
+
+        #region Implementation
+        private void RefreshPlaceholderVisuals() {
+            if (_innerComboBox.SelectedIndex == -1) {
+                _innerButton.Text = _placeholderText;
+                _innerButton.ForeColor = _placeholderTextColor;
+            } else {
+                _innerButton.Text = _innerComboBox.SelectedItem.ToString();
+                _innerButton.ForeColor = ForeColor;
+            }
         }
         #endregion
 

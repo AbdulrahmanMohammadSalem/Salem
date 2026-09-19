@@ -17,24 +17,7 @@ namespace Workplace__WinForms_ {
             InitializeComponent();
         }
 
-        private void Form3_Load(object sender, EventArgs e) {
-        }
-
-        private void comboBox1_FontChanged(object sender, EventArgs e) {
-        }
-            
         private void fuiButton1_Click(object sender, EventArgs e) {
-            int height;
-            comboBox1.DrawMode = DrawMode.Normal;
-            height = comboBox1.ItemHeight;
-            comboBox1.DrawMode = DrawMode.OwnerDrawVariable;
-            MessageBox.Show($"CorrectedItemHeight = {height}, FontHeight = {comboBox1.Font.Height}");
-        }
-    }
-
-    public class c : ComboBox {
-        public c() {
-            
         }
     }
 }

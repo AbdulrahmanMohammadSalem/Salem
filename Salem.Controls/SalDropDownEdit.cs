@@ -23,10 +23,11 @@ namespace Salem.Controls {
 
         #region Public Properties
         /// <summary>
-        /// Gets or sets a value indicating whether a separator line is drawn alongside the button.
+        /// Gets or sets a value indicating whether a separator line is drawn alongside the button when the mouse pointer is over it.
         /// </summary>
         [Localizable(true)]
         [DefaultValue(false)]
+        [Category("Appearance"), Description("Specifies whether a separator line is drawn alongside the button when the mouse pointer is over it.")]
         public bool ShowSeparatorOnMouseOver {
             get => _showSeparatorOnMouseOver;
             set {
@@ -41,13 +42,12 @@ namespace Salem.Controls {
         /// </summary>
         [Localizable(true)]
         [DefaultValue(typeof(Color), "188, 188, 188")]
-        public Color BorderColor {
-            get => _borderColor;
+        [Category("Appearance"), Description("The color of the border displayed around the control.")]
+        public override Color BorderColor {
+            get => base.BorderColor;
             set {
-                _borderColor = value;
-
+                base.BorderColor = value;
                 Invalidate();
-                _innerButton.Invalidate();
             }
         }
 
@@ -56,6 +56,7 @@ namespace Salem.Controls {
         /// </summary>
         [Localizable(true)]
         [DefaultValue(typeof(Color), "229, 229, 229")]
+        [Category("Appearance"), Description("The background color of the drop-down button when the mouse pointer is over it.")]
         public Color DropDownMouseOverBackColor { get => _innerButton.FlatAppearance.MouseOverBackColor; set => _innerButton.FlatAppearance.MouseOverBackColor = value; }
 
         /// <summary>
@@ -63,38 +64,25 @@ namespace Salem.Controls {
         /// </summary>
         [Localizable(true)]
         [DefaultValue(typeof(Color), "210, 210, 210")]
+        [Category("Appearance"), Description("The background color of the drop-down button when the mouse pointer is pressed.")]
         public Color DropDownMouseDownBackColor { get => _innerButton.FlatAppearance.MouseDownBackColor; set => _innerButton.FlatAppearance.MouseDownBackColor = value; }
-
-        /// <summary>
-        /// Gets or sets the background color of the control.
-        /// </summary>
-        [Localizable(true)]
-        [DefaultValue(typeof(Color), "Window")]
-        public override Color BackColor {
-            get => base.BackColor;
-            set {
-                base.BackColor = value;
-
-                if (_innerComboBox != null)
-                    _innerButton.BackColor = _innerComboBox.BackColor = value;
-            }
-        }
 
         /// <summary>
         /// Gets or sets the color used to draw the drop-down arrow on the button.
         /// </summary>
         [Localizable(true)]
         [DefaultValue(typeof(Color), "60, 60, 60")]
+        [Category("Appearance"), Description("The color used to draw the drop-down arrow on the button.")]
         public Color DropDownArrowColor { get => _innerButton.ForeColor; set => _innerButton.ForeColor = value; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether text and child elements are displayed from right to left, such as
-        /// for languages like Arabic or Hebrew.
+        /// Gets or sets a value indicating whether the control should draw right-to-left for RTL languages.
         /// </summary>
         /// <remarks>Setting this property affects the layout and alignment of the control and its child
         /// elements to support right-to-left languages. Changing the value may also update the position of associated
         /// UI elements to match the reading direction.</remarks>
         [Localizable(true)]
+        [Category("Appearance"), Description("Indicates whether the component should draw right-to-left for RTL languages.")]
         public override RightToLeft RightToLeft {
             get => base.RightToLeft;
             set {
@@ -112,6 +100,7 @@ namespace Salem.Controls {
         /// input. The available modes determine whether suggestions are shown in a drop-down list, appended to the
         /// existing text, or both. The default value is <see cref="AutoCompleteMode.None"/>.</remarks>
         [DefaultValue(AutoCompleteMode.None)]
+        [Description("Indicates the text completion behavior of the combo box.")]
         public AutoCompleteMode AutoCompleteMode { get => _innerComboBox.AutoCompleteMode; set => _innerComboBox.AutoCompleteMode = value; }
 
         /// <summary>
@@ -122,6 +111,7 @@ namespace Salem.Controls {
         /// possible matches based on a predefined list, file system entries, or other sources. The behavior of
         /// auto-complete is also influenced by the <see cref="AutoCompleteMode"/> and <see cref="AutoCompleteCustomSource"/> properties.</remarks>
         [DefaultValue(AutoCompleteSource.None)]
+        [Description("The source of complete strings used for automatic completion.")]
         public AutoCompleteSource AutoCompleteSource { get => _innerComboBox.AutoCompleteSource; set => _innerComboBox.AutoCompleteSource = value; }
 
         /// <summary>
@@ -134,6 +124,7 @@ namespace Salem.Controls {
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         [Localizable(true)]
         [Editor("System.Windows.Forms.Design.ListControlStringCollectionEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
+        [Description("The autocomplete custome source, which is a custom StringCollection used when the AutoCompleteSource is CustomSource.")]
         public AutoCompleteStringCollection AutoCompleteCustomSource { get => _innerComboBox.AutoCompleteCustomSource; set => _innerComboBox.AutoCompleteCustomSource = value; }
 
         /// <summary>
@@ -144,6 +135,7 @@ namespace Salem.Controls {
         /// entered. Setting this property to a value less than 0 will throw an exception.</remarks>
         [DefaultValue(0)]
         [Localizable(true)]
+        [Category("Behavior"), Description("Specifies the maximum number of characters that can be entered into the combo box.")]
         public int MaxLength { get => _innerComboBox.MaxLength; set => _innerComboBox.MaxLength = value; }
         
         /// <summary>
