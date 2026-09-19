@@ -86,6 +86,7 @@ namespace Salem.Controls {
         private StringAlignment _textAlignDropDownItems = StringAlignment.Near;
 
         private Func<DrawItemEventArgs, (Rectangle, Rectangle)> CalculateAppropriateItemRectangles = CalculateAppropriateItemRectangles_LTR;
+        private Func<int> GetActiveItemsHeight;
         #endregion
 
         #region Event Raisers
@@ -287,7 +288,16 @@ namespace Salem.Controls {
                 if (value < -1)
                     throw new ArgumentOutOfRangeException(nameof(DropDownItemsHeight), "The value should be -1 or higher.");
 
-                _dropDownItemsHeight = value;
+                if (_dropDownItemsHeight != value) {
+                    _dropDownItemsHeight = value;
+
+                    if (value == -1)
+                        GetActiveItemsHeight = () => _cachedDefaultDropDownItemsHeight;
+                    else
+                        GetActiveItemsHeight = () => _dropDownItemsHeight;
+
+                    ForceMeasureItemEvent();
+                }
             }
         }
 
@@ -328,7 +338,8 @@ namespace Salem.Controls {
 
         #region Identity
         protected SalDropDownBase() {
-            _cachedDefaultDropDownItemsHeight = Font.Height;
+            UpdateCachedDefaultItemHeight();
+            GetActiveItemsHeight = () => _cachedDefaultDropDownItemsHeight;
 
             TabStop = false;
             BackColor = SystemColors.Window;
@@ -382,7 +393,7 @@ namespace Salem.Controls {
         }
 
         protected override void OnFontChanged(EventArgs e) {
-            _cachedDefaultDropDownItemsHeight = Font.Height;
+            UpdateCachedDefaultItemHeight();
 
             base.OnFontChanged(e);
         }
@@ -450,7 +461,7 @@ namespace Salem.Controls {
             }
         }
 
-        protected void InnerComboBox_MeasureItem(object sender, MeasureItemEventArgs e) => e.ItemHeight = _dropDownItemsHeight == -1 ? _cachedDefaultDropDownItemsHeight : _dropDownItemsHeight;
+        protected void InnerComboBox_MeasureItem(object sender, MeasureItemEventArgs e) => e.ItemHeight = GetActiveItemsHeight();
 
         private void PerformDrawItem_Fonts(DrawItemEventArgs e) {
             if (UsePurposeAwareItemFonts) {
@@ -487,6 +498,17 @@ namespace Salem.Controls {
         );
 
         private void PerformDrawItem_Any(DrawItemEventArgs e) => e.Graphics.DrawString(Items[e.Index].ToString(), Font, GetAppropriateDrawItemBrush(e.State), e.Bounds, _drawItemStringFormat);
+
+        private void UpdateCachedDefaultItemHeight() {
+            _innerComboBox.DrawMode = DrawMode.Normal;
+            _cachedDefaultDropDownItemsHeight = _innerComboBox.ItemHeight;
+            _innerComboBox.DrawMode = DrawMode.OwnerDrawVariable;
+        }
+
+        private void ForceMeasureItemEvent() {
+            _innerComboBox.DrawMode = DrawMode.Normal;
+            _innerComboBox.DrawMode = DrawMode.OwnerDrawVariable;
+        }
         #endregion
 
         #region Public Methods

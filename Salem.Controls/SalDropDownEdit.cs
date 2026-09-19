@@ -284,11 +284,11 @@ namespace Salem.Controls {
             _innerButton.Width = ShowSeparatorOnMouseOver ? 27 : 26; //It broke in design-time, so I had to enforce it here...
         
             if (RightToLeft == RightToLeft.Yes)
-                _innerComboBox.Region = new Region(new Rectangle(30, 3, _innerComboBox.Width - _innerButton.Width - 5, _innerComboBox.PreferredHeight - 6));
+                _innerComboBox.Region = new Region(new Rectangle(30, 3, _innerComboBox.Width - _innerButton.Width - 5, _innerComboBox.Height - 6));
             else
-                _innerComboBox.Region = new Region(new Rectangle(3, 3, _innerComboBox.Width - _innerButton.Width - 5, _innerComboBox.PreferredHeight - 6));
+                _innerComboBox.Region = new Region(new Rectangle(3, 3, _innerComboBox.Width - _innerButton.Width - 5, _innerComboBox.Height - 6));
         
-            Height = _innerComboBox.PreferredHeight;
+            Height = _innerComboBox.Height;
             _oldRegion?.Dispose();
         }
 
