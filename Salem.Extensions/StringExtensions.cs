@@ -3,7 +3,7 @@ using System.Text;
 
 namespace Salem.Extensions {
     public static class StringExtensions {
-        public static string ToIdentifier(this string str, bool substituteInvalidCharsForUnderscores = true) {
+        public static string ToIdentifier(this string str, bool replaceInvalidCharsWithUnderscores = true) {
             var _result = new StringBuilder();
             int i = 0;
             const string FORBIDDEN = " '\"@#$%^?~\\+-*/&|!.,;:(){}[]\t\n";
@@ -16,7 +16,7 @@ namespace Salem.Extensions {
                 i++;
             }
 
-            if (substituteInvalidCharsForUnderscores) {
+            if (replaceInvalidCharsWithUnderscores) {
                 for (; i < str.Length; i++) {
                     if (FORBIDDEN.Contains(str[i]) || char.IsControl(str[i]))
                         _result.Append('_');
