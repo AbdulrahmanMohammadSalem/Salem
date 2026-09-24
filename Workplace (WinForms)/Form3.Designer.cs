@@ -23,59 +23,38 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.salDropDownList1 = new Salem.Controls.SalDropDownList();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // dataGridView1
             // 
-            this.comboBox1.Location = new System.Drawing.Point(242, 344);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(246, 31);
-            this.comboBox1.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(561, 405);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(115, 31);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // salDropDownList1
-            // 
-            this.salDropDownList1.BackColor = System.Drawing.Color.AliceBlue;
-            this.salDropDownList1.BorderColor = System.Drawing.Color.CornflowerBlue;
-            this.salDropDownList1.DropDownWidth = 246;
-            this.salDropDownList1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.salDropDownList1.Location = new System.Drawing.Point(242, 296);
-            this.salDropDownList1.Name = "salDropDownList1";
-            this.salDropDownList1.SelectedIndex = -1;
-            this.salDropDownList1.Size = new System.Drawing.Size(246, 31);
-            this.salDropDownList1.TabIndex = 1;
-            this.salDropDownList1.TabStop = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 26;
+            this.dataGridView1.Size = new System.Drawing.Size(787, 566);
+            this.dataGridView1.TabIndex = 0;
             // 
             // Form3
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(787, 566);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.salDropDownList1);
-            this.Controls.Add(this.comboBox1);
-            this.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.Controls.Add(this.dataGridView1);
+            this.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form3";
             this.Text = "My Screen";
+            this.Load += new System.EventHandler(this.Form3_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
-        private Salem.Controls.SalDropDownList salDropDownList1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

@@ -1,59 +1,99 @@
-﻿using DVLD_DataAccess;
-using Salem.Extensions;
+﻿using Salem.Extensions;
 using System;
-using System.IO;
-using System.Linq;
-using System.Text;
+using System.Data;
+using System.Data.SqlClient;
+using System.Diagnostics;
 
-namespace Workplace__Console_ {
+namespace Workspace__Console_ {
     internal class Program {
-        static int[] seq = new int[] { 179, 113, 988, -415, 911, -272, -659, -503, -137, 897, -564, 615, -740, -977, 975, -414, -958, -113, 919, 420, 22, -778, 36, 126, -412, 117, -137, -69, 844, 866, 632, 7, -810, 836, 8, 454, -303, -179, 438, -313, -820, 710, -359, -879, -912, -197, 53, 31, 591, -751, -774, -595, -150, 973, 932, -43, -923, -138, 996, -206, 865, 409, -348, -3, -735, 429, 425, -576, 15, -479, 889, 221, 448, 232, 240, 312, 580, -86, 37, 785, -937, 831, 340, 595, 639, 226, -844, -783, 903, -950, 377, 834, -176, -356, -178, -230, 57, 644, 855, -341, 377, -371, -984, 70, -641, 5, -43, 618, -268, -381, 376, 163, 824, -789, -270, -967, -931, 57, 357, 39, 272, 208, -480, -36, 143, -946, -604, -197, -591, -531, -746, 936, 58, -622, -593, 434, 815, -731, 235, -366, -731, -463, 484, 283, -326, -786, -990, -387, 914, -212, -299, -1000, -714, -184, 386, -832, -891, 51, 926, -696, -392, -847, 209, -737, -635, 439, -896, 445, 803, 296, -782, 799, 822, -277, -231, -266, 724, 236, -711, -71, -956, 783, -111, 620, 767, -746, 649, -759, -8, -761, 325, -237, -658, -70, -974, -885, 328, 221, -82, 234, -891, -435, -190, -382, -431, -99, -823, 563, -953, -348, -556, -128, -239, -4, -740, -176, 264, 588, -505, -890, 790, 862, -547, 564, 970, 455, 457, -109, -304, -346, 406, -497, -683, 55, -180, 479, -27, -730, 51, -134, -924, -914, -806, -660, 794, -548, -999, 345, -330, 201, -150, 740, -274, -192, 444, -753, -889, 245, -353, 114, 444, 286, -134, 392, 245, 941, -445, 706, -824, -220, 851, -6, -463, 628, -967, 703, 667, -887, 769, 518, 453, -889, -780, 495, 803, 666, 776, 508, 610, -427, 367, 727, 623, 936, 422, -211, 220, -199, 94, 853, 896, -705, 169, 889, 350, 856, 202, 97, -226, 741, -421, 998, 475, 128, 661, 332, 66, 371, 589, 579, -836, 46, -905, 603, 413, -877, 370, -400, -794, 243, -517, -134, 19, 916, 621, 158, -58, -670, -856, 947, -537, -322, -267, 869, 994, 369, -749, -506, -725, -911, 723, 849, 212, 514, 688, -150, -801, 565, -524, 227, -515, -399, -109, 531, 257, 712, -21, 559, 507, -498, -610, -265, 226, 641, 116, 485, -688, -775, 609, -956, 871, -124, -675, -883, 520, -367, 653, 504, -773, -229, -42, 376, 854, -83, 461, 861, 787, 202, -389, -719, -610, -308, -13, 772, 698, -13, -378, 570, -602, -797, -462, 974, 956, -568, 355, 609, -725, -227, -989, -376, -941, 474, 332, -264, 544, 14, -119, -691, -820, 254, 697, 109, 613, 327, 653, 179, 888, -447, -582, -468, -989, -917, 105, -976, -768, -16, 419, 421, 561, 851, 585, 14, 191, 987, -778, -85, 359, -749, -773, -316, -894, -687, 389, 144, -495, 428, -640, -372, -222, -824, 721, 722, -646, 478, -388, 975, -631, 307, -497, -440, 594, 459, -253, -672, 668, -317, 918, 626, 105, -262, 819, 636, -674, 734, -574, 697, -307, 961, 519, -196, -377, -210, -357, 385, -870, 863, -341, 712, 374, -754, -455, -949, 748, 667, 89, -354, 565, 60, 475, 821, 510, -266, 523, -961, -644, -916, 395, -380, 52, -85, 282, -593, 788, 698, 936, -197, -184, 362, -802, 804, -977, -795, -749, -141, -808, 767, 888, -341, -356, 779, -869, 632, -515, 697, 294, 889, 267, -397, 28, -955, -533, -961, -340, -541, -37, -862, -737, -950, 730, -714, 830, -797, -138, 670, 798, 304, -517, -337, 846, -411, -805, -264, 975, 273, -217, 650, 922, -909, -597, -954, 535, -788, -666, -848, 337, 984, 545, 791, 895, -946, 504, 838, -72, -642, 949, 928, -230, -186, 898, 990, 406, -396, -244, -562, 849, 730, -937, 387, 676, 313, -785, -829, 646, 683, -250, 617, 868, -291, -667, 814, 759, -309, -232, 792, 85, -643, 808, 617, 323, -146, -120, 107, -808, -587, -360, -69, 455, 895, -697, 606, 920, -842, -886, -418, 838, 332, -808, 244, 607, -669, -940, -940, -520, -916, -770, -286, 835, -36, 353, 492, 922, -554, -937, -178, -567, 108, 979, 232, 43, 818, -839, 972, -594, -273, 894, 600, -423, -814, 953, 752, -835, -437, -991, -8, -207, -181, -374, -892, -818, 926, 95, -509, -458, -190, 683, 474, -906, 292, -852, -270, 352, -40, -799, 789, -831, -913, 654, 753, -810, -370, -863, 649, 10, 600, 327, 358, -564, 71, -972, 614, -519, 871, 49, 116, -278, 670, 430, 595, 44, -581, 505, 285, -963, 223, -601, 205, -638, -781, -178, -294, 164, -127, 917, 552, 789, 445, 480, -59, 483, -676, 37, 23, 263, -466, -752, 481, 910, 84, 66, -501, -343, -942, -292, 770, 124, -148, 612, 787, 201, -878, -4, -784, -752, 322, -551, 607, 953, 496, 327, 276, -811, -511, -888, -281, 382, -518, -979, 503, -26, -82, 294, 277, 153, -678, -951, 105, -836, -854, -572, -63, 833, 693, 739, 361, 328, -180, -226, 941, -916, -360, 527, -587, 757, 790, -690, -833, 946, 989, -613, -358, -170, -892, -188, -717, -173, 719, 63, 926, 272, 344, 443, 806, 68, -610, 442, -505, -251, -249, 390, -438, 707, -921, 418, -667, 390, -120, 519, 362, -988, 881, 159, -826, 759, 786, -894, 724, -120, 456, -467, 608, 756, -152, -331, -260, 197, 720, 345, 367, -653, 814, 417, 195, -401, 825, -66, -249, -311, -521, -108, 946, -801, 700, 913, 391, -815, 268, -953, 281, -717, 717, 615, 292, -783, 781, -195, -142, 410, -322, 135, 669, 535, -848, 15, -803, -537, 963, 575, 933, -149, 354, 35, -599, -437, -414, 409, -945, -65, 277, -445, 929, 673, -937, 83, -371, -801, -876, -23, -183, 20, -924, 341, -989, 343, 223, -589, -953, -315, 715, -73, -779, 692, -886, -570, -71, -318, 213, -271, 630, -628, -251, 923, -868, -877, 206, 996, 471, 68, -615, 998, -662, -15, -243, -87, -225, -987, 23, 57, 340, -825, 361, 370, 219, -650, -667, -764, 558, 633, -846, 946, -15, 395, 346, -555, -730, -847, 209, 887, -864, 227, -60 };
+        internal const string CONNECTION_STRING = "Server=.;Database=C21_DB1;User Id=sa;Password=sa123456";
 
         static void Main() {
-            MergeSort(seq);
+            // Run one of the following lines.
 
+            RunManualCSharpDemo();
+            RunSqlDemo();
         }
 
-        public static void PrintRandomSequence(int low, int high, int count) {
-            var rand = new Random();
-
-            while (count > 0) {
-                Console.Write($"{rand.Next(low, high)}, ");
-                count--;
-            }
+        internal static void RunManualCSharpDemo() {
+            using (var _empTable = SelectTable("SELECT * FROM Employees2"))
+            using (var _resultTable = ProcessTable(_empTable))
+                _resultTable.PrintToConsole(22);
         }
 
-        public static void MergeSort(int[] arr) => MergeSort(arr, 0, arr.Length - 1);
+        internal static void RunSqlDemo() {
+            const string QUERY = @" SELECT 
+                                    	PerformanceCategory, 
+                                    	NumberOfEmployees = COUNT(*), 
+                                    	AverageSalary = AVG(Salary) 
+                                    FROM (
+                                    	SELECT Name, Salary,
+                                    		CASE
+                                    			WHEN PerformanceRating >= 80 THEN 'High'
+                                    			WHEN PerformanceRating >= 60 THEN 'Medium'
+                                    			ELSE 'Low'
+                                    		END AS PerformanceCategory
+                                    	FROM Employees2
+                                    	) As PerformanceTable
+                                    GROUP BY PerformanceCategory";
 
-        public static void MergeSort(int[] arr, int leftmost, int rightmost) {
-            if (leftmost < rightmost) {
-                int mid = (leftmost + rightmost) / 2;
-
-                MergeSort(arr, leftmost, mid);
-                MergeSort(arr, mid + 1, rightmost);
-                Merge(arr, leftmost, mid, rightmost);
-            }
+            using (var _resultTable = SelectTable(QUERY))
+                _resultTable.PrintToConsole(22);
         }
 
-        public static void Merge(int[] arr, int leftmost, int mid, int rightmost) {
-            int[] subArray = new int[rightmost - leftmost + 1];
-            int left = leftmost, right = mid + 1, i = 0;
+        internal static DataTable ProcessTable(DataTable empTable) {
+            int _rating;
+            (int _highCount, int _medCount, int _lowCount) = (0, 0, 0);
+            (int _totalSalaryHigh, int _totalSalaryMed, int _totalSalaryLow) = (0, 0, 0);
 
-            while (left <= mid && right <= rightmost) {
-                if (arr[left] <= arr[right])
-                    subArray[i++] = arr[left++];
-                else
-                    subArray[i++] = arr[right++];
+            foreach (DataRow _row in empTable.Rows) {
+                _rating = (int) _row["PerformanceRating"];
+
+                if (_rating >= 80) { // High
+                    _highCount++;
+                    _totalSalaryHigh += (int) _row["Salary"];
+                }
+                else if (_rating >= 60) { // Medium
+                    _medCount++;
+                    _totalSalaryMed += (int) _row["Salary"];
+                }
+                else { // Low
+                    _lowCount++;
+                    _totalSalaryLow += (int) _row["Salary"];
+                }
             }
 
-            while (left <= mid)
-                subArray[i++] = arr[left++];
+            var _result = new DataTable();
 
-            while (right <= rightmost)
-                subArray[i++] = arr[right++];
+            _result.Columns.Add("PerformanceCategory", typeof(string));
+            _result.Columns.Add("TotalEmployees", typeof(int));
+            _result.Columns.Add("AverageSalary", typeof(int));
 
-            for (int j = 0; j < subArray.Length; j++)
-                arr[leftmost + j] = subArray[j];
+            if (_highCount > 0)
+                _result.Rows.Add("High", _highCount, _totalSalaryHigh / _highCount);
+
+            if (_medCount > 0)
+                _result.Rows.Add("Medium", _medCount, _totalSalaryMed / _medCount);
+
+            if (_lowCount > 0)
+                _result.Rows.Add("Low", _lowCount, _totalSalaryLow / _lowCount);
+
+            return _result;
+        }
+
+        internal static DataTable SelectTable(string query) {
+            using (var _connection = new SqlConnection(CONNECTION_STRING))
+            using (var _command = new SqlCommand(query, _connection)) {
+                try {
+                    _connection.Open();
+
+                    using (var _reader = _command.ExecuteReader())
+                        return _reader.LoadIntoTable();
+                } catch (Exception ex) {
+                    Console.WriteLine($"Exception thrown: {ex.Message}");
+                    return null;
+                }
+            }
         }
     }
 }
