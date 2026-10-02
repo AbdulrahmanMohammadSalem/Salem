@@ -24,18 +24,9 @@
         /// </summary>
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form3));
-            this.salDropDownList1 = new Salem.Controls.SalDropDownList();
             this.label1 = new System.Windows.Forms.Label();
+            this.salDropDownEdit1 = new Salem.Controls.SalDropDownEdit();
             this.SuspendLayout();
-            // 
-            // salDropDownList1
-            // 
-            resources.ApplyResources(this.salDropDownList1, "salDropDownList1");
-            this.salDropDownList1.Name = "salDropDownList1";
-            this.salDropDownList1.Purpose = Salem.Controls.SalDropDownBase.SalDropDownPurpose.Countries;
-            this.salDropDownList1.SelectedIndex = -1;
-            this.salDropDownList1.Sorted = true;
-            this.salDropDownList1.TabStop = false;
             // 
             // label1
             // 
@@ -43,13 +34,22 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.label1.Name = "label1";
             // 
+            // salDropDownEdit1
+            // 
+            resources.ApplyResources(this.salDropDownEdit1, "salDropDownEdit1");
+            this.salDropDownEdit1.Name = "salDropDownEdit1";
+            this.salDropDownEdit1.Purpose = Salem.Controls.SalDropDownBase.SalDropDownPurpose.Countries;
+            this.salDropDownEdit1.SelectedIndex = -1;
+            this.salDropDownEdit1.Sorted = true;
+            this.salDropDownEdit1.TabStop = false;
+            // 
             // Form3
             // 
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
-            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.salDropDownList1);
+            this.Controls.Add(this.salDropDownEdit1);
             this.Name = "Form3";
             this.TitleBarColorMode = Salem.Drawing.ColorModes.Dark;
             this.Load += new System.EventHandler(this.Form3_Load);
@@ -59,8 +59,7 @@
         }
 
         #endregion
-
-        private Salem.Controls.SalDropDownList salDropDownList1;
         private System.Windows.Forms.Label label1;
+        private Salem.Controls.SalDropDownEdit salDropDownEdit1;
     }
 }

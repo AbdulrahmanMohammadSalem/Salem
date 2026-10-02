@@ -118,111 +118,114 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="salDropDownList1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>None</value>
+  <data name="salDropDownEdit1.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="salDropDownList1.BackColor" type="System.Drawing.Color, System.Drawing">
-    <value>47, 47, 47</value>
-  </data>
-  <data name="salDropDownList1.BorderColor" type="System.Drawing.Color, System.Drawing">
-    <value>96, 96, 96</value>
-  </data>
-  <data name="salDropDownList1.DropDownArrowColor" type="System.Drawing.Color, System.Drawing">
-    <value>241, 241, 241</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="salDropDownList1.DropDownWidth" type="System.Int32, mscorlib">
-    <value>217</value>
-  </data>
-  <data name="salDropDownList1.ForeColor" type="System.Drawing.Color, System.Drawing">
-    <value>241, 241, 241</value>
-  </data>
-  <data name="salDropDownList1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>157, 69</value>
-  </data>
-  <data name="salDropDownList1.MouseDownBackColor" type="System.Drawing.Color, System.Drawing">
-    <value>118, 118, 118</value>
-  </data>
-  <data name="salDropDownList1.MouseOverBackColor" type="System.Drawing.Color, System.Drawing">
-    <value>80, 80, 80</value>
-  </data>
-  <data name="salDropDownList1.PlaceholderText" xml:space="preserve">
-    <value>Select Country</value>
-  </data>
-  <data name="salDropDownList1.PlaceholderTextColor" type="System.Drawing.Color, System.Drawing">
-    <value>110, 110, 110</value>
-  </data>
-  <data name="salDropDownList1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>217, 31</value>
-  </data>
-  <data name="salDropDownList1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;salDropDownList1.Name" xml:space="preserve">
-    <value>salDropDownList1</value>
-  </data>
-  <data name="&gt;&gt;salDropDownList1.Type" xml:space="preserve">
-    <value>Salem.Controls.SalDropDownList, Salem.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;salDropDownList1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;salDropDownList1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="label1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Semibold, 10.2pt, style=Bold</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>54, 73</value>
-  </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 23</value>
   </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Nationality:</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>428, 169</value>
   </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 10pt</value>
-  </data>
-  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Demo</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Form3</value>
   </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>54, 73</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;salDropDownEdit1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="salDropDownEdit1.ForeColor" type="System.Drawing.Color, System.Drawing">
+    <value>241, 241, 241</value>
+  </data>
+  <data name="salDropDownEdit1.DropDownMouseDownBackColor" type="System.Drawing.Color, System.Drawing">
+    <value>118, 118, 118</value>
+  </data>
+  <data name="salDropDownEdit1.DropDownMouseOverBackColor" type="System.Drawing.Color, System.Drawing">
+    <value>80, 80, 80</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="salDropDownEdit1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>217, 25</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Demo</value>
+  </data>
+  <data name="salDropDownEdit1.BackColor" type="System.Drawing.Color, System.Drawing">
+    <value>47, 47, 47</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;salDropDownEdit1.Name" xml:space="preserve">
+    <value>salDropDownEdit1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Nationality:</value>
+  </data>
+  <data name="label1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>Salem.Controls.SalForm, Salem.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
+  <data name="salDropDownEdit1.BorderColor" type="System.Drawing.Color, System.Drawing">
+    <value>96, 96, 96</value>
+  </data>
+  <data name="&gt;&gt;salDropDownEdit1.Type" xml:space="preserve">
+    <value>Salem.Controls.SalDropDownEdit, Salem.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="salDropDownEdit1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="salDropDownEdit1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 10pt</value>
+  </data>
+  <data name="salDropDownEdit1.DropDownArrowColor" type="System.Drawing.Color, System.Drawing">
+    <value>241, 241, 241</value>
+  </data>
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Semibold, 10.2pt, style=Bold</value>
+  </data>
+  <data name="&gt;&gt;salDropDownEdit1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="salDropDownEdit1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>157, 69</value>
+  </data>
+  <data name="salDropDownEdit1.DropDownWidth" type="System.Int32, mscorlib">
+    <value>217</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>ar</value>
+  </metadata>
 </root>
