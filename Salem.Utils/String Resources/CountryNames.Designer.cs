@@ -414,9 +414,9 @@ namespace Salem.Utils.String_Resources {
         /// <summary>
         ///   Looks up a localized string similar to Côte d&apos;Ivoire.
         /// </summary>
-        internal static string Côted_Ivoire {
+        internal static string CôtedIvoire {
             get {
-                return ResourceManager.GetString("Côted_Ivoire", resourceCulture);
+                return ResourceManager.GetString("CôtedIvoire", resourceCulture);
             }
         }
         

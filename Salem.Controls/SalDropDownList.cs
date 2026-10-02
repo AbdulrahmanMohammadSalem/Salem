@@ -4,7 +4,6 @@ using Salem.Utils.Image_Resources;
 using System;
 using System.ComponentModel;
 using System.Drawing;
-using System.Drawing.Design;
 using System.Windows.Forms;
 
 namespace Salem.Controls {
@@ -19,6 +18,7 @@ namespace Salem.Controls {
         private int _borderSize = 1, _imageSizeCache;
         private string _placeholderText = "Select";
         private Color _placeholderTextColor = Color.Gray;
+        private Padding _designerPadding = Padding.Empty;
         #endregion
 
         #region Public Properties
@@ -108,7 +108,15 @@ namespace Salem.Controls {
         [Localizable(true)]
         [DefaultValue(typeof(Padding), "0, 0, 0, 0")]
         [Category("Layout"), Description("The text padding for the combo box control face (doesn't affect the drop-down portion).")]
-        public new Padding Padding { get => _innerButton.Padding; set => _innerButton.Padding = value; }
+        public new Padding Padding {
+            get => _designerPadding;
+            set{
+                _designerPadding = value;
+
+                if (_innerComboBox.SelectedIndex == -1)
+                    _innerButton.Padding = value;
+            } 
+        }
 
         /// <summary>
         /// Gets or sets the alignment of the text on the combo box control.
@@ -125,6 +133,19 @@ namespace Salem.Controls {
         /// </summary>
         /// <returns><see langword="true"/> if this control has focus; otherwise, <see langword="false"/>.</returns>
         public override bool Focused => _innerButton.Focused;
+
+        private Padding ModifiedPadding {
+            get {
+                if (Purpose == SalDropDownPurpose.Countries && UsePurposeAwareItemImages) {
+                    if (RightToLeft == RightToLeft.Yes)
+                        return new Padding(_designerPadding.Left, _designerPadding.Top, _designerPadding.Right + _imageSizeCache, _designerPadding.Bottom);
+
+                    return new Padding(_designerPadding.Left + _imageSizeCache, _designerPadding.Top, _designerPadding.Right, _designerPadding.Right);
+                }
+
+                return _designerPadding;
+            }
+        }
         #endregion
 
         #region Identity
@@ -200,7 +221,7 @@ namespace Salem.Controls {
                 DrawingHelpers.DrawSimpleBorder(e.Graphics, new Rectangle(_innerButton.ClientRectangle.X, _innerButton.ClientRectangle.Y, _innerButton.ClientRectangle.Width - 1, _innerButton.ClientRectangle.Height - 1), _borderColor, _borderSize);
             
             if (_innerComboBox.SelectedIndex > -1 && _purpose == SalDropDownPurpose.Countries && UsePurposeAwareItemImages)
-                e.Graphics.DrawImage(CountryFlags_Square64.Retrieve((Countries) _innerComboBox.SelectedIndex), _imageRect);
+                e.Graphics.DrawImage(((CountryDTO) _innerComboBox.SelectedItem).CountryFlagImage, _imageRect);
 
             using (var _brush = new SolidBrush(_dropDownArrowColor))    
             using (var _font = new Font("Segoe Fluent Icons", 7.5F))
@@ -245,9 +266,11 @@ namespace Salem.Controls {
             if (_innerComboBox.SelectedIndex == -1) {
                 _innerButton.Text = _placeholderText;
                 _innerButton.ForeColor = _placeholderTextColor;
+                _innerButton.Padding = _designerPadding;
             } else {
                 _innerButton.Text = _innerComboBox.SelectedItem.ToString();
                 _innerButton.ForeColor = ForeColor;
+                _innerButton.Padding = ModifiedPadding;
             }
         }
         #endregion

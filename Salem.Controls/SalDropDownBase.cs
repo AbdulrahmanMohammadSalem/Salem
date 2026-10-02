@@ -81,10 +81,10 @@ namespace Salem.Controls {
         protected readonly Button _innerButton = new Button { FlatStyle = FlatStyle.Flat };
         protected readonly ComboBox _innerComboBox = new ComboBox { Dock = DockStyle.Fill, DrawMode = DrawMode.OwnerDrawVariable, MaxDropDownItems = 12 };
 
-        private readonly SolidBrush _foreColorBrush = new SolidBrush(SystemColors.WindowText);
+        private readonly SolidBrush _foreColorBrush = new SolidBrush(SystemColors.WindowText), _dropDownItemHighlightBrush = new SolidBrush(SystemColors.Highlight);
         private readonly StringFormat _drawItemStringFormat = new StringFormat { LineAlignment = StringAlignment.Center };
 
-        protected Color _borderColor = Color.FromArgb(188, 188, 188);
+        protected Color _borderColor = Color.FromArgb(188, 188, 188), _dropDownItemHighlightColor = SystemColors.Highlight;
         protected SalDropDownPurpose _purpose = SalDropDownPurpose.NotSet;
 
         private int _dropDownItemsHeight = -1, _cachedDefaultDropDownItemsHeight;
@@ -92,6 +92,7 @@ namespace Salem.Controls {
 
         private Func<DrawItemEventArgs, (Rectangle, Rectangle)> CalculateAppropriateItemRectangles = CalculateAppropriateItemRectangles_LTR;
         private Func<int> GetActiveItemsHeight;
+        private Action<DrawItemEventArgs> DrawItemSpecialized;
         #endregion
 
         #region Event Raisers
@@ -203,6 +204,20 @@ namespace Salem.Controls {
         public object SelectedItem { get => _innerComboBox.SelectedItem; set => _innerComboBox.SelectedItem = value; }
 
         /// <summary>
+        /// Gets or sets the value of the member property specified by the <see cref="ListControl.ValueMember"/> property.
+        /// </summary>
+        /// <returns>
+        /// An object containing the value of the member of the data source specified by
+        /// the <see cref="ListControl.ValueMember"/> property.
+        /// </returns>
+        /// <exception cref="InvalidOperationException">The assigned value is <see langword="null"/> or the empty string ("").</exception>
+        [DefaultValue(null)]
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Bindable(true)]
+        public object SelectedValue { get => _innerComboBox.SelectedValue; set => _innerComboBox.SelectedValue = value; }
+
+        /// <summary>
         /// Gets or sets a value indicating whether the items in the combo box are sorted alphabetically.
         /// </summary>
         /// <remarks>When set to <see langword="true"/>, items added to the combo box are automatically
@@ -305,6 +320,17 @@ namespace Salem.Controls {
             }
         }
 
+        [DefaultValue(typeof(Color), "Highlight")]
+
+        /// <summary>
+        /// Gets or sets the background color of highlighted drop-down items.
+        /// </summary>
+        [Category("Appearance"), Description("The background color of highlighted drop-down items.")]
+        public Color DropDownItemHighlightColor {
+            get => _dropDownItemHighlightColor;
+            set => _dropDownItemHighlightBrush.Color = _dropDownItemHighlightColor = value;
+        }
+
         /// <summary>
         /// Gets or sets a value indicating whether formatting is applied to the <see cref="ListControl.DisplayMember"/> property of the <see cref="ListControl"/>.
         /// </summary>
@@ -386,7 +412,19 @@ namespace Salem.Controls {
                     _purpose = value;
 
                     if (!DesignMode)
-                        ApplyPurposeSettings();
+                        ApplyPurposeItems();
+
+                    switch (value) {
+                        case SalDropDownPurpose.Fonts:
+                            DrawItemSpecialized =  PerformDrawItem_Fonts;
+                            break;
+                        case SalDropDownPurpose.Countries:
+                            DrawItemSpecialized = PerformDrawItem_Countries;
+                            break;
+                        default:
+                            DrawItemSpecialized = PerformDrawItem_Any;
+                            break;
+                    }
                 }
             }
         }
@@ -415,7 +453,9 @@ namespace Salem.Controls {
         #region Identity
         protected SalDropDownBase() {
             UpdateCachedDefaultItemHeight();
+
             GetActiveItemsHeight = () => _cachedDefaultDropDownItemsHeight;
+            DrawItemSpecialized = PerformDrawItem_Any;
 
             TabStop = false;
             BackColor = SystemColors.Window;
@@ -452,7 +492,7 @@ namespace Salem.Controls {
             AdjustDimensions();
 
             if (!DesignMode)
-                ApplyPurposeSettings();
+                ApplyPurposeItems();
 
             base.OnCreateControl();
         }
@@ -480,6 +520,7 @@ namespace Salem.Controls {
                 _innerComboBox.Dispose();
 
                 _foreColorBrush.Dispose();
+                _dropDownItemHighlightBrush.Dispose();
                 _drawItemStringFormat.Dispose();
             }
 
@@ -488,20 +529,20 @@ namespace Salem.Controls {
         #endregion
 
         #region Implemenation
-        private void ApplyPurposeSettings() {
+        private void ApplyPurposeItems() {
             if (_purpose != SalDropDownPurpose.NotSet) {
                 Items.Clear();
                 Items.AddRange(GetAppropriateItemsCollection());
             }
         }
 
-        private string[] GetAppropriateItemsCollection() {
+        private object[] GetAppropriateItemsCollection() {
             switch (_purpose) {
                 case SalDropDownPurpose.Fonts: return DrawingHelpers.GetInstalledFontFamilyNames(false);
-                case SalDropDownPurpose.Countries: return LocalizedStrings.GetCountryNames();
-                case SalDropDownPurpose.PaperSizes: return LocalizedStrings.GetPaperSizeNames();
-                case SalDropDownPurpose.Months: return LocalizedStrings.GetMonthNames();
-                case SalDropDownPurpose.DaysOfWeek: return LocalizedStrings.GetDayOfWeekNames();
+                case SalDropDownPurpose.Countries: return LocalizedRetriever.GetCountryDTOs();
+                case SalDropDownPurpose.PaperSizes: return LocalizedRetriever.GetPaperSizeNames();
+                case SalDropDownPurpose.Months: return LocalizedRetriever.GetMonthNames();
+                case SalDropDownPurpose.DaysOfWeek: return LocalizedRetriever.GetDayOfWeekNames();
                 default: return new string[] { };
             }
         }
@@ -516,6 +557,8 @@ namespace Salem.Controls {
         }
 
         private Brush GetAppropriateDrawItemBrush(DrawItemState state) => state.HasFlag(DrawItemState.Focus) || state.HasFlag(DrawItemState.Selected) ? Brushes.White : _foreColorBrush;
+        
+        protected void InnerComboBox_MeasureItem(object sender, MeasureItemEventArgs e) => e.ItemHeight = GetActiveItemsHeight();
 
         protected void InnerComboBox_DrawItem(object sender, DrawItemEventArgs e) {
             if (e.Index < 0)
@@ -523,24 +566,14 @@ namespace Salem.Controls {
 
             e.Graphics.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
             e.DrawBackground();
-
-            switch (_purpose) {
-                case SalDropDownPurpose.Fonts:
-                    PerformDrawItem_Fonts(e);
-                    break;
-                case SalDropDownPurpose.Countries:
-                    PerformDrawItem_Countries(e);
-                    break;
-                default:
-                    PerformDrawItem_Any(e);
-                    break;
-            }
+            DrawItemSpecialized(e);
         }
-
-        protected void InnerComboBox_MeasureItem(object sender, MeasureItemEventArgs e) => e.ItemHeight = GetActiveItemsHeight();
 
         private void PerformDrawItem_Fonts(DrawItemEventArgs e) {
             if (UsePurposeAwareItemFonts) {
+                if (e.State.HasFlag(DrawItemState.Selected))
+                    e.Graphics.FillRectangle(_dropDownItemHighlightBrush, e.Bounds);
+
                 using (var _font = new Font(Items[e.Index].ToString(), _innerComboBox.Font.Size))
                     e.Graphics.DrawString(Items[e.Index].ToString(), _font, GetAppropriateDrawItemBrush(e.State), e.Bounds, _drawItemStringFormat);
 
@@ -553,10 +586,14 @@ namespace Salem.Controls {
         private void PerformDrawItem_Countries(DrawItemEventArgs e) {
             if (UsePurposeAwareItemImages) {
                 (Rectangle _imageRect, Rectangle _textRect) = CalculateAppropriateItemRectangles(e);
-                
-                e.Graphics.DrawImage(CountryFlags_Square64.Retrieve((Countries) e.Index), _imageRect);
-                e.Graphics.DrawString(Items[e.Index].ToString(), Font, GetAppropriateDrawItemBrush(e.State), _textRect, _drawItemStringFormat);
+                var _selectedCountryDTO = (CountryDTO) _innerComboBox.Items[e.Index];
 
+                if (e.State.HasFlag(DrawItemState.Selected))
+                    e.Graphics.FillRectangle(_dropDownItemHighlightBrush, _textRect);
+
+                e.Graphics.DrawImage(_selectedCountryDTO.CountryFlagImage, _imageRect);
+                e.Graphics.DrawString(_selectedCountryDTO.LocalizedCountryName, Font, GetAppropriateDrawItemBrush(e.State), _textRect, _drawItemStringFormat);
+                
                 return;
             }
             
@@ -573,7 +610,12 @@ namespace Salem.Controls {
             new Rectangle(e.Bounds.X + e.Bounds.Height, e.Bounds.Y, e.Bounds.Width - e.Bounds.Height, e.Bounds.Height)
         );
 
-        private void PerformDrawItem_Any(DrawItemEventArgs e) => e.Graphics.DrawString(Items[e.Index].ToString(), Font, GetAppropriateDrawItemBrush(e.State), e.Bounds, _drawItemStringFormat);
+        private void PerformDrawItem_Any(DrawItemEventArgs e) {
+            if (e.State.HasFlag(DrawItemState.Selected))
+                e.Graphics.FillRectangle(_dropDownItemHighlightBrush, e.Bounds);
+            
+            e.Graphics.DrawString(Items[e.Index].ToString(), Font, GetAppropriateDrawItemBrush(e.State), e.Bounds, _drawItemStringFormat);
+        }
 
         private void UpdateCachedDefaultItemHeight() {
             _innerComboBox.DrawMode = DrawMode.Normal;

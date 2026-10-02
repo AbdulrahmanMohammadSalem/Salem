@@ -23,38 +23,44 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form3));
+            this.salDropDownList1 = new Salem.Controls.SalDropDownList();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // salDropDownList1
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 26;
-            this.dataGridView1.Size = new System.Drawing.Size(787, 566);
-            this.dataGridView1.TabIndex = 0;
+            resources.ApplyResources(this.salDropDownList1, "salDropDownList1");
+            this.salDropDownList1.Name = "salDropDownList1";
+            this.salDropDownList1.Purpose = Salem.Controls.SalDropDownBase.SalDropDownPurpose.Countries;
+            this.salDropDownList1.SelectedIndex = -1;
+            this.salDropDownList1.Sorted = true;
+            this.salDropDownList1.TabStop = false;
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.label1.Name = "label1";
             // 
             // Form3
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(787, 566);
-            this.Controls.Add(this.dataGridView1);
-            this.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
+            resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.salDropDownList1);
             this.Name = "Form3";
-            this.Text = "My Screen";
+            this.TitleBarColorMode = Salem.Drawing.ColorModes.Dark;
             this.Load += new System.EventHandler(this.Form3_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private Salem.Controls.SalDropDownList salDropDownList1;
+        private System.Windows.Forms.Label label1;
     }
 }
