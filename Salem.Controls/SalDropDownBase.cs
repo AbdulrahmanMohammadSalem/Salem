@@ -59,6 +59,18 @@ namespace Salem.Controls {
         public event EventHandler SelectedIndexChanged;
 
         /// <summary>
+        /// Occurs when the <see cref="SelectedItem"/> property changes only if the selection is not commited.
+        /// </summary>
+        [Category("Behavior"), Description("Occurs when the SelectedItem property changes only if the selection is not commited.")]
+        public event EventHandler HighlightedItemChanged;
+
+        /// <summary>
+        /// Occurs when the value of the <see cref="SelectedValue"/> property is changed.
+        /// </summary>
+        [Category("Behavior"), Description("Occurs when the value of the SelectedValue property is changed.")]
+        public event EventHandler SelectedValueChanged;
+
+        /// <summary>
         /// Occurs when an item is chosen from the drop-down list and the drop-down list is closed.
         /// </summary>
         [Category("Behavior"), Description("Occurs when an item is chosen from the drop-down list and the drop-down list is closed.")]
@@ -108,6 +120,18 @@ namespace Salem.Controls {
         /// <param name="e">An <see cref="EventArgs"/> that contains the event data.</param>
         protected virtual void OnSelectedIndexChanged(EventArgs e) => SelectedIndexChanged?.Invoke(this, e);
 
+        /// <summary>
+        /// Raises the <see cref="HighlightedItemChanged"/> event.
+        /// </summary>
+        /// <param name="e"></param>
+        protected virtual void OnSelectedItemChanged(EventArgs e) => HighlightedItemChanged?.Invoke(this, e);
+
+        /// <summary>
+        /// Raises the <see cref="SelectedValueChanged"/> event.
+        /// </summary>
+        /// <param name="e">An <see cref="EventArgs"/> that contains the event data.</param>
+        protected virtual void OnSelectedValueChanged(EventArgs e) => SelectedValueChanged?.Invoke(this, e);
+        
         /// <summary>
         /// Raises the <see cref="SelectionChangeCommitted"/> event.
         /// </summary>
@@ -567,6 +591,9 @@ namespace Salem.Controls {
             e.Graphics.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
             e.DrawBackground();
             DrawItemSpecialized(e);
+
+            if (e.State.HasFlag(DrawItemState.Selected))
+                OnSelectedItemChanged(EventArgs.Empty);
         }
 
         private void PerformDrawItem_Fonts(DrawItemEventArgs e) {
